@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Carrom Qualification</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background: transparent;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .scoreboard {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    /* Navigation */
+    .tabs {
+      display: flex;
+      width: 100%;
+      margin-bottom: 12px;
+      background: #eeeeee;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .tab {
+      flex: 1;
+      border: none;
+      padding: 12px 8px;
+      background: #eeeeee;
+      color: #333333;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .tab.active {
+      background: #222222;
+      color: #ffffff;
+    }
+
+    .tab:hover {
+      opacity: 0.9;
+    }
+
+    /* Match panels */
+    .match {
+      display: none;
+      width: 100%;
+    }
+
+    .match.active {
+      display: block;
+    }
+
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    iframe {
+      display: block;
+      width: 1px;
+      min-width: 100%;
+      height: 364px;
+      border: 0;
+    }
+
+    /* Mobile */
+    @media (max-width: 500px) {
+      .tab {
+        padding: 11px 5px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="scoreboard">
+
+    <!-- Navigation -->
+    <div class="tabs">
+
+      <button
+        class="tab active"
+        id="tab1"
+        onclick="showMatch(1)">
+        Match 1
+      </button>
+
+      <button
+        class="tab"
+        id="tab2"
+        onclick="showMatch(2)">
+        Match 2
+      </button>
+
+      <button
+        class="tab"
+        id="tab3"
+        onclick="showMatch(3)">
+        Match 3
+      </button>
+
+    </div>
+
+
+    <!-- MATCH 1 -->
+    <div class="match active" id="match1">
+
+      <div class="iframe-container">
+
+        <iframe
+          src="https://the-tournament.net/en/tournaments/mjSnVRRzjav5cv7vtFSO/embed"
+          seamless
+          frameborder="0"
+          scrolling="no"
+          width="100%"
+          height="364"
+          style="width:1px;min-width:100%;">
+        </iframe>
+
+      </div>
+
+    </div>
+
+
+    <!-- MATCH 2 -->
+    <div class="match" id="match2">
+
+      <div class="iframe-container">
+
+        <iframe
+          src="https://the-tournament.net/en/tournaments/LfwRKjLXB1jhwY6Iu5EX/embed"
+          seamless
+          frameborder="0"
+          scrolling="no"
+          width="100%"
+          height="364"
+          style="width:1px;min-width:100%;">
+        </iframe>
+
+      </div>
+
+    </div>
+
+
+    <!-- MATCH 3 -->
+    <div class="match" id="match3">
+
+      <div class="iframe-container">
+
+        <iframe
+          src="https://the-tournament.net/en/tournaments/bsPl8xPl1d3bfz7VgKCm/embed"
+          seamless
+          frameborder="0"
+          scrolling="no"
+          width="100%"
+          height="364"
+          style="width:1px;min-width:100%;">
+        </iframe>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+    function showMatch(number) {
+
+      const matches = [
+        document.getElementById("match1"),
+        document.getElementById("match2"),
+        document.getElementById("match3")
+      ];
+
+      const tabs = [
+        document.getElementById("tab1"),
+        document.getElementById("tab2"),
+        document.getElementById("tab3")
+      ];
+
+      matches.forEach(function(match) {
+        match.classList.remove("active");
+      });
+
+      tabs.forEach(function(tab) {
+        tab.classList.remove("active");
+      });
+
+      matches[number - 1].classList.add("active");
+      tabs[number - 1].classList.add("active");
+    }
+  </script>
+
+</body>
+</html>
