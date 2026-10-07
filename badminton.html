@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Volleyball Scoreboard</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background: transparent;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .scoreboard {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    /* Navigation */
+    .tabs {
+      display: flex;
+      width: 100%;
+      margin-bottom: 12px;
+      background: #eeeeee;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .tab {
+      flex: 1;
+      border: none;
+      padding: 12px 10px;
+      background: #eeeeee;
+      color: #333333;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .tab.active {
+      background: #222222;
+      color: #ffffff;
+    }
+
+    .tab:hover {
+      opacity: 0.9;
+    }
+
+    /* Groups */
+    .group {
+      display: none;
+      width: 100%;
+    }
+
+    .group.active {
+      display: block;
+    }
+
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    iframe {
+      display: block;
+      width: 1px;
+      min-width: 100%;
+      border: 0;
+    }
+
+    /* Mobile */
+    @media (max-width: 500px) {
+      .tab {
+        padding: 11px 8px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="scoreboard">
+
+    <!-- Navigation -->
+    <div class="tabs">
+
+      <button
+        class="tab active"
+        id="tabA"
+        onclick="showGroup('A')">
+        Group A
+      </button>
+
+      <button
+        class="tab"
+        id="tabB"
+        onclick="showGroup('B')">
+        Group B
+      </button>
+
+    </div>
+
+
+    <!-- GROUP A -->
+    <div class="group active" id="groupA">
+
+      <div class="iframe-container">
+
+        <iframe
+          src="https://the-tournament.net/en/leagues/WW7R6HHhbtMKhwCNDW20/embed"
+          seamless
+          frameborder="0"
+          scrolling="no"
+          width="100%"
+          height="686"
+          style="width:1px;min-width:100%;">
+        </iframe>
+
+      </div>
+
+    </div>
+
+
+    <!-- GROUP B -->
+    <div class="group" id="groupB">
+
+      <div class="iframe-container">
+
+        <iframe
+          src="https://the-tournament.net/en/leagues/mly4WP4xeTmlNwNlJYCI/embed"
+          seamless
+          frameborder="0"
+          scrolling="no"
+          width="100%"
+          height="606"
+          style="width:1px;min-width:100%;">
+        </iframe>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+    function showGroup(group) {
+
+      const groupA = document.getElementById("groupA");
+      const groupB = document.getElementById("groupB");
+
+      const tabA = document.getElementById("tabA");
+      const tabB = document.getElementById("tabB");
+
+      if (group === "A") {
+
+        groupA.classList.add("active");
+        groupB.classList.remove("active");
+
+        tabA.classList.add("active");
+        tabB.classList.remove("active");
+
+      } else {
+
+        groupA.classList.remove("active");
+        groupB.classList.add("active");
+
+        tabA.classList.remove("active");
+        tabB.classList.add("active");
+
+      }
+    }
+  </script>
+
+</body>
+</html>
